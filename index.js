@@ -36,7 +36,7 @@ app.get('/login', (req, res) => {
   res.render('login')
 });
 
-app.listen(3000, () => {
-  console.log('App listening on port 3000!');
+app.listen(80, () => {
+  console.log('App listening on port 80!');
 });
  
