@@ -29,7 +29,7 @@ db.connect( (err)=> {
 //Define Routes
 
 app.use('/', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'))
+app.use('/auth', require('./routes/auth'));
 
 app.listen(80, () => {
   console.log('App listening on port 80!');
