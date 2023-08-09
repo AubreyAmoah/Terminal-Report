@@ -27,4 +27,16 @@ module.exports = {
             }
         )
     },
+    getUserByToken: (token, callBack) => {
+        pool.query(
+            `select * from admin_tokens where token = ?`,
+            [token],
+            (error, results, fields) => {
+                if (error) {
+                    callBack(error);
+                }
+                return callBack(null, results[0]);
+            }
+        )
+    }
 }

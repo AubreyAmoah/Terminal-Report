@@ -1,20 +1,21 @@
-let overviewPage = (element, user) => {
+let overviewPage = (element) => {
     return (
         element.innerHTML = `
-            <div class="item__card">
-            <div class="flex__row flex__between">
-                <span>Total Number</span>
-                <select class="item__card--drop" name="" id="">
-                    <option class="item__card--drop__option" value="">Staff</option>
-                    <option class="item__card--drop__option" value="">Courses</option>
-                    <option class="item__card--drop__option" value="">Subjects</option>
-                    <option class="item__card--drop__option" value="">Students</option>
-                </select>
-            </div>
+            <div class="item__card" id="entities">
+                <div class="flex__row flex__between">
+                    <span>Total Number</span>
+                    <select class="item__card--drop" name="" id="entity_choice">
+                        <option class="item__card--drop__option" value="staff">Staff</option>
+                        <option class="item__card--drop__option" value="program">Programmes</option>
+                        <option class="item__card--drop__option" value="class">Classes</option>
+                        <option class="item__card--drop__option" value="subject">Subjects</option>
+                        <option class="item__card--drop__option" value="student">Students</option>
+                    </select>
+                </div>
 
-            <div class="item__card--item">
-                <h1 class="item__card--item__h1">24</h1>
-            </div>
+                <div class="item__card--item">
+                    <h1 class="item__card--item__h1">24</h1>
+                </div>
             </div>
             <div class="item__card">
                 <div class="flex__row flex__between">

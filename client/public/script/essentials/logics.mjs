@@ -1,50 +1,47 @@
+function updateDate() {
+    // Create a new Date object to get the current date
+    const currentDate = new Date();
+  
+    // Get the current date components
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const day = currentDate.getDate();
+    const dayOfWeek = currentDate.getDay()
 
-
-const date = new Date();
-
-function getTodayDate(element){
-    const todayDate = date.getDate();
-    element.innerText = todayDate;
-}
-
-function getTodayDay(element){
-    const dayOfWeek = date.getDay();
-
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday','Saturday']
-
-    const dayName = daysOfWeek[dayOfWeek];
-
-    element.innerText = dayName;
-}
-
-function getTodayMonth(element){
-    const month = date.getMonth();
-
-    const months = ['January', 'February', 'March', 'April','May','June','July', 'August', 'September', 'October', 'November', 'December'];
-
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthName = months[month];
 
-    element.innerText = monthName;
-}
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayName = daysOfWeek[dayOfWeek];
+  
+    // Format the date as "YYYY-MM-DD"
+    const formattedDate = `${dayName} ${day < 10 ? '0' + day : day} ${monthName} ${year}`;
+  
+    // Update the content of the HTML element with the current date
+    document.getElementById('dateDisplay').textContent = formattedDate;
+  
+    // Call the updateDate function again on the next animation frame
+    requestAnimationFrame(updateDate);
+  }
+  
 
-function getCurrentYear(element){
-    const currentYear = date.getFullYear();
-    element.innerText = currentYear;
-}
+function updateTime() {
+    // Create a new Date object to get the current time
+    const currentTime = new Date();
+  
+    // Get the current time components
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    const seconds = currentTime.getSeconds();
+  
+    // Format the time with leading zeros if needed
+    const formattedTime = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  
+    // Update the content of an HTML element with the current time
+    document.getElementById('timeDisplay').textContent = formattedTime;
 
-function getHours(element){
-    const hours = date.getHours();
-    element.innerText = hours;
-}
+    requestAnimationFrame(updateTime);
+  }
+  
 
-function getMinutes(element){
-    const minutes = date.getMinutes();
-    element.innerText = minutes;
-}
-
-function getSeconds(element){
-    const seconds = date.getSeconds();
-    element.innerText = seconds;
-}
-
-export {getTodayDate, getTodayDay, getTodayMonth, getCurrentYear, getHours, getMinutes, getSeconds}
+export { updateDate, updateTime}

@@ -266,6 +266,100 @@ body {
   top: -15%;
 }
 
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+}
+.overlay__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  width: 90%;
+  height: 80%;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 10000000;
+}
+.overlay__item--close-btn {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  color: #4a4a4b;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 40px;
+}
+.overlay__item--save-btn {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  cursor: pointer;
+  background: linear-gradient(to left, #8860d0, #5680e9);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+.overlay__item--option {
+  cursor: pointer;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  background: transparent;
+  z-index: 1000000000000;
+}
+.overlay__item--container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 20px;
+}
+@media only screen and (max-width: 800px) {
+  .overlay__item--container {
+    width: 90%;
+    height: 90%;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .overlay__item--close-btn {
+    top: 1%;
+  }
+  .overlay__item--save-btn {
+    bottom: 1%;
+    z-index: 1000000000000;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .overlay__item--close-btn {
+    top: -1%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .overlay__item {
+    height: 90%;
+    padding: 20px 20px;
+  }
+}
+
 .item__card {
   position: relative;
   padding: 10px 20px;
@@ -443,10 +537,13 @@ body {
   color: #4a4a4b;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   .form {
     width: 100%;
-    height: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 .navbar {

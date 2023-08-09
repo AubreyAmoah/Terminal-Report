@@ -1,5 +1,4 @@
 import { logout } from './adminLogout.mjs';
-import { getTodayDay, getTodayDate, getTodayMonth, getCurrentYear, getHours, getMinutes, getSeconds } from '../essentials/logics.mjs';
 
 const displayDashboard = () => {
     const alert = document.getElementById('alert');
@@ -12,26 +11,4 @@ const displayDashboard = () => {
     })
 }
 
-const defineDate = () => {
-    const day = document.getElementById('day');
-    const date = document.getElementById('date');
-    const month = document.getElementById('month');
-    const year = document.getElementById('year');
-
-    getTodayDay(day);
-    getTodayDate(date);
-    getTodayMonth(month);
-    getCurrentYear(year);
-
-}
-
-const defineTime = () => {
-    const hour = document.getElementById('hours');
-    const minute = document.getElementById('minutes');
-    const second = document.getElementById('seconds');
-    getHours(hour);
-    getMinutes(minute);
-    getSeconds(second);
-}
-
-export {displayDashboard, defineDate, defineTime}
+export {displayDashboard}

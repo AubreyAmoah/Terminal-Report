@@ -2,10 +2,14 @@ import {loginPage} from './components/loginPage.mjs';
 import { registerPage } from './components/registerPage.mjs';
 import { dashboardPage } from './components/dashboard.mjs';
 import { overviewPage } from './components/overview.mjs';
+import { NotFoundPage } from './components/404.mjs';
 import { register } from './functionalities/admnRegister.mjs';
 import { login } from './functionalities/adminLogin.mjs';
-import { displayDashboard, defineDate, defineTime } from './functionalities/dashboardFunctionality.mjs';
+import { updateTime, updateDate } from './essentials/logics.mjs';
+import { displayDashboard } from './functionalities/dashboardFunctionality.mjs';
 import { getAdminDetails } from './functionalities/adminGetDetails.mjs';
+import { overlayComponent } from './components/overlay.mjs';
+import { staffOverlayComponent } from './components/staffoverlay.mjs';
 
 
 // Function to update the content based on the current route
@@ -33,14 +37,43 @@ function updateContent() {
     } else if (path === '/dash') {
         dashboardPage();
         displayDashboard();
-        setInterval(defineTime, 1000)
-        defineDate();
+        // setInterval(updateTime, 1000);
+        updateTime();
+        updateDate();
         getAdminDetails();
         const content = document.getElementById('content');
         
         overviewPage(content);
+
+        const entityChoice = document.getElementById('entity_choice');
+        const entity = document.getElementById('entities');
+        const overlay = document.getElementById('overlay');
+
+        
+
+        entity.addEventListener('click', () => {
+
+            overlay.classList.remove('hide__all');
+            overlayComponent(overlay);
+
+            const overlayClose = document.getElementById('overlay_close');
+            overlayClose.addEventListener('click', () => {
+    
+    
+                overlay.classList.add('hide_all');
+            })
+
+            const overlayRoot = document.getElementById('overlay_root');
+
+            console.log(entityChoice.value)
+
+            if (entityChoice.value === 'staff') {
+                staffOverlayComponent(overlayRoot);
+            }
+
+        })
     } else {
-        loginPage();
+        NotFoundPage();
     }
 }
 

@@ -2,6 +2,7 @@ const root = document.getElementById('root');
 let dashboardPage = () => {
     return (
         root.innerHTML = `
+        <div class="overlay hide__all" id="overlay"></div>
         <div id="alert" class="alert position__top--center flex__row flex__center--align hide__all">
             <img id='alert_img' class="alert__img margin__right" src="" alt="">
             <p id="notify"></p>
@@ -11,34 +12,28 @@ let dashboardPage = () => {
                 <ul class="side__bar--list full__height margin__top flex__column--responsive">
                     <li class="side__bar--list__item flex__column flex__center--align flex__center">
                         <img class="side__bar--list__item--image" src="/assets/overview-white.png" alt="overview">
-                        <a href="" class="side__bar--list__item--link">Overview</a>
+                        <span class="side__bar--list__item--link">Overview</span>
                     </li>
                     <li class="side__bar--list__item flex__column flex__center--align flex__center margin__top--small" >
                         <img class="side__bar--list__item--image" src="/assets/user-white.png" alt="profile">
-                        <a href="" class="side__bar--list__item--link">Profile</a>
+                        <span class="side__bar--list__item--link">Profile</span>
                     </li>
                     <li class="side__bar--list__item flex__column flex__center--align flex__center margin__top--small">
                         <img class="side__bar--list__item--image" src="/assets/setting-white.png" alt="">
-                        <a href="" class="side__bar--list__item--link">Setting</a>
+                        <span href="" class="side__bar--list__item--link">Setting</span>
                     </li>
 
-                    <li class="side__bar--list__item flex__column flex__center--align flex__center margin__top--small">
+                    <li id="logout" class="side__bar--list__item flex__column flex__center--align flex__center margin__top--small">
                         <img class="side__bar--list__item--image" src="/assets/power-white.png" alt="">
-                        <button id="logout" class="side__bar--list__item--link">Logout</button>
+                        <span class="side__bar--list__item--link">Logout</span>
                     </li>
                 </ul>
             </div>
             <div class="content flex__ninety">
                 <div class="navbar flex__row flex__end flex__center--align">
                     <div class="flex__row flex__end--align margin__right--small">
-                        <span id="day" class="content__text"></span>
-                        <span class="content__text">,</span>
-                        <span id="date" class="content__text margin__right--micro"></span>
-                        <span id="month" class="content__text margin__right--micro"></span>
-                        <span id="year" class="content__text margin__right--micro"></span>
-                        <span id="hours" class="content__text--bold"></span>
-                        <span id="minutes" class="content__text--bold"></span>
-                        <span id="seconds" class="content__text--bold"></span>
+                        <span id="dateDisplay" class="content__text margin__right--micro"></span>
+                        <span id="timeDisplay"></span>
                     </div>
                 </div>
                 <div class="content__navbar margin__top--mini">

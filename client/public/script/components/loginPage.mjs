@@ -1,5 +1,3 @@
-import { loadingPage } from './loadingPage.mjs';
-
 const root = document.getElementById('root');
 let loginPage = () => {
     return (
