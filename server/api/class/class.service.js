@@ -3,7 +3,8 @@ const pool = require('../../config/database');
 module.exports = {
     createClass: (data, callBack) => {
         pool.query(
-            `insert into classes (name, createdBy) values (?,?)`, [
+            `insert into classes (id, name, createdBy) values (?,?,?)`, [
+                data.id,
                 data.name,
                 data.createdBy
             ],
@@ -18,7 +19,7 @@ module.exports = {
     },
     updateClass: (data, id, owner, callBack) => {
         pool.query(
-            `update classes set name = ? where id = ? and created_by = ?`, [
+            `update classes set name = ? where id = ? and createdBy = ?`, [
                 data.name,
                 id,
                 owner
@@ -34,7 +35,7 @@ module.exports = {
     },
     deleteClass: (id, owner, callBack) => {
         pool.query(
-            `delete from classes where id = ? and created_by = ?`,
+            `delete from classes where id = ? and createdBy = ?`,
             [id,owner],
             (error, results, fields) => {
                 if (error) {
@@ -46,7 +47,7 @@ module.exports = {
     },
     getClassByID: (id, owner, callBack) => {
         pool.query(
-            `select * from classes where id = ? and created_by = ?`,
+            `select * from classes where id = ? and createdBy = ?`,
             [id, owner],
             (error, results, fields) => {
                 if (error) {
@@ -58,7 +59,7 @@ module.exports = {
     },
     getClassByClassName: (name, owner, callBack) => {
         pool.query(
-            `select * from classes where name = ? and created_by = ?`,
+            `select * from classes where name = ? and createdBy = ?`,
             [name, owner],
             (error, results, fields) => {
                 if (error) {
@@ -70,7 +71,7 @@ module.exports = {
     },
     getAllClasses: (owner, callBack) => {
         pool.query(
-            `select * from classes where created_by = ?`,
+            `select * from classes where createdBy = ?`,
             [owner],
             (error, results, fields) => {
                 if (error) {
@@ -83,7 +84,7 @@ module.exports = {
 
     getClassByName: (owner, query, callBack) => {
         pool.query(
-            `select * from classes where created_by = ? and name LIKE '%${query}%'`,
+            `select * from classes where createdBy = ? and name LIKE '%${query}%'`,
             [owner],
             (error, results, fields) => {
                 if(error){

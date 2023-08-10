@@ -24,6 +24,7 @@ module.exports = {
             const owner = results.email
 
             const body = req.body;
+            const id = body.id
             body.createdBy = owner;
 
             getClassByClassName(body.name, owner, (err, results) => {
@@ -32,26 +33,61 @@ module.exports = {
                 }
 
                 if(!results) {
-                    createClass(body, (err, results) => {
-                        if (err) {
+                    getClassByID(id, owner, (err, results) => {
+                        if(err) {
                             console.log(err);
-                            return res.status(500).json({
-                                success: 0,
-                                message: 'Database connection error'
-                            });
                         }
 
                         if(!results) {
-                            return res.json({
-                                success: 0,
-                                data: 'class creation failed!!'
+                            createClass(body, (err, results) => {
+                                if (err) {
+                                    console.log(err);
+                                    return res.status(500).json({
+                                        success: 0,
+                                        message: 'Database connection error'
+                                    });
+                                }
+        
+                                if(!results) {
+                                    return res.json({
+                                        success: 0,
+                                        data: 'class creation failed!!'
+                                    })
+                                }
+                    
+                                return res.status(200).json({
+                                    success: 1,
+                                    data: results
+                                });
+                            })
+                        } else {
+                            while (body.id < body.id) {
+                                body.id + 1
+                            }
+                            console.log(body.id);
+                            
+                            createClass(body, (err, results) => {
+                                if (err) {
+                                    console.log(err);
+                                    return res.status(500).json({
+                                        success: 0,
+                                        message: 'Database connection error'
+                                    });
+                                }
+        
+                                if(!results) {
+                                    return res.json({
+                                        success: 0,
+                                        data: 'class creation failed!!'
+                                    })
+                                }
+                    
+                                return res.status(200).json({
+                                    success: 1,
+                                    data: results
+                                });
                             })
                         }
-            
-                        return res.status(200).json({
-                            success: 1,
-                            data: results
-                        });
                     })
                 } else {
                     return res.status(401).json({
